@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+ 
+int main(int argc, char** argv){
+    int opt, base;
+    while(cin >> opt >> base){
+        string str;
+        cin >> str;
+        if(opt == 1){
+            int num;
+            cin >> num;
+            int flag = 0;
+            int cur;
+            string ans = "";
+            while(num){
+                cur = num % base - flag;
+                if(cur <= 0){
+                    flag = 1;
+                    ans += str[str.size() - 1 + cur];
+                }
+                else{
+                    flag = 0;
+                    ans += str[cur - 1];
+                }
+                num = num / base;
+            }
+            reverse(ans.begin(), ans.end());
+            if(flag){
+                ans = ans.substr(1);
+            }
+            cout << ans << endl;
+        }
+        if(opt == 2){
+            string temp;
+            cin >> temp;
+            reverse(temp.begin(), temp.end());
+            int ans = 0;
+            int cur = 1;
+            for(int i = 0; i < temp.size(); i++){
+                ans += cur * (temp[i] - 'A' + 1);
+                cur = cur * base;
+            }
+            cout << ans << endl;
+        } 
+    } 
+    return 0;
+}
