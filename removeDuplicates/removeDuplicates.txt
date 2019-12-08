@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int removeDuplicates(int A[], int n) {
+        if(n==0)
+            return 0;
+     int len=1;
+    int num=A[0],j=1;
+    for(int i=1;i<n;i++)
+    {
+        if(num==A[i])//相等则不操作
+            continue;
+        len++;
+        num=A[i];
+        A[j++]=A[i];//A[i]赋值，将前面重复的值覆盖即可
+    }
+    return len;
+    }
+};
