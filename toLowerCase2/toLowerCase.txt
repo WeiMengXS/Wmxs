@@ -1,0 +1,29 @@
+void reverse(int* dst,int n)
+{int tmp=0;
+int* str=dst;
+int* end=str;
+end+=n-1;
+while(str<end)
+{
+tmp=*str;
+*str=*end;
+*end=tmp;
+str++;
+end--;
+}
+
+}
+
+void rotate(int* nums, int numsSize, int k){
+if(numsSize==1)
+return nums;
+if(numsSize==0)
+return 0;
+k=k%numsSize;
+reverse(nums,numsSize);
+reverse(nums,k);
+reverse(nums+k,numsSize-k);
+
+
+return nums;
+}
